@@ -1,0 +1,16 @@
+version: '3'
+
+services:
+  postgres:
+    image: postgres # from hub.docker.com
+    ports: 
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_DB: review
+      POSTGRES_PASSWORD: password
+
+  redis:
+    image: redis # from hub.docker.com
+    ports:
+      - "6379:6379"
