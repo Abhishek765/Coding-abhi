@@ -49,21 +49,6 @@ async function printData(id) {
 // printData(2);
 
 // ----------------------------------------------------------------
-
-//! common pattern for Promisifying a function with a single callback
-function promisifiedFunction(params) {
-  return new Promise((resolve, reject) => {
-    originalFunction(params, (error, result) => {
-      if (error) {
-        reject(error);
-      } else {
-        resolve(result);
-      }
-    });
-  });
-}
-
-// ----------------------------------------------------------------
 //! Handling of multiple callbacks
 
 function originalMultipleCallbackFunc(success1, success2, error) {
@@ -111,3 +96,27 @@ async function printMultipleCallbackExample() {
 }
 
 printMultipleCallbackExample();
+
+// ----------------------------------------------------------------
+
+//! A helper Promisification function which takes a function and returns a promise based function
+function promisify(fn) {
+  return function (...args) {
+    return new Promise((resolve, reject) => {
+      fn(...args, (err, result) => {
+        if (err) return reject(err);
+        else return resolve(result);
+      });
+    });
+  };
+}
+
+(async function () {
+  try {
+    const promisedFunction = promisify(getCallbackData);
+    const result = await promisedFunction(22);
+    console.log({ result });
+  } catch (error) {
+    console.error(error);
+  }
+})();
