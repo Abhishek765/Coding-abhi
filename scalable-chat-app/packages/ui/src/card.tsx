@@ -8,7 +8,7 @@ export function Card({
   title: string;
   children: React.ReactNode;
   href: string;
-}): JSX.Element {
+}): React.ReactNode {
   return (
     <a
       className={className}
