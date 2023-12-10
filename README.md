@@ -7,3 +7,4 @@
 - **JavaScript**
   - [Promisification In JavaScript](https://github.com/Abhishek765/Coding-abhi/tree/main/JS%20based%20coding/promisification-in-js)
   - [Debounce and Throttling](https://github.com/Abhishek765/Coding-abhi/tree/main/JS%20based%20coding/debounceAndThrottle)
+  - [Scalable Chat App with TurboRepo, next js, Nodejs, sockets, redis](https://github.com/Abhishek765/Coding-abhi/tree/main/scalable-chat-app)
