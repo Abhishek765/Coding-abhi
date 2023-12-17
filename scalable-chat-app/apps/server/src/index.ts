@@ -1,10 +1,20 @@
-import http from "http";
+import express from "express";
+
+import { createServer } from "node:http";
 import SocketService from "./services/socket";
 
 async function init() {
+  const app = express();
   const socketService = new SocketService();
-  const httpServer = http.createServer();
+  const httpServer = createServer(app);
+
+  // constants
   const PORT = process.env.PORT || 8000;
+
+  // Routes
+  app.get("/", (req, res) => {
+    res.send("<h1>Hello from Home!!!</h1>");
+  });
 
   // Attaching the socket server to http server
   socketService.io.attach(httpServer);
