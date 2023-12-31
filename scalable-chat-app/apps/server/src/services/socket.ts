@@ -1,5 +1,5 @@
 import { Server } from "socket.io";
-
+import Redis from "ioredis";
 class SocketService {
   private _io: Server;
   constructor() {
@@ -27,6 +27,7 @@ class SocketService {
       // client can emit this event `event:message`
       socket.on("event:message", ({ message }: { message: string }) => {
         console.log(`new message Received: ${message}`);
+        // publish this message to redis
       });
     });
   }

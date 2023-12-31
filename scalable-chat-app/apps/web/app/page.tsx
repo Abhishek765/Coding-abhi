@@ -10,8 +10,8 @@ const Page = () => {
   const [inputMessage, setInputMessage] = useState<string>("");
 
   const handleSendClick = () => {
-    console.log({ inputMessage });
     state.sendMessage(inputMessage);
+    setInputMessage("");
   };
 
   return (
@@ -23,6 +23,7 @@ const Page = () => {
         <Input
           type="text"
           placeholder="Messages"
+          value={inputMessage}
           onChange={(e) => setInputMessage(e.target.value)}
         />
         <Button onClick={handleSendClick}>Send</Button>

@@ -28,6 +28,7 @@ const SocketProvider = ({ children }: SocketProviderProps) => {
 
     return () => {
       socket.disconnect();
+      setSocket(null);
     };
   }, []);
 
