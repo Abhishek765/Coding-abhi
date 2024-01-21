@@ -1,7 +1,9 @@
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "About",
+  title: {
+    absolute: "About page", // absolute will ignore any parent overridden title
+  },
   description: "This is About page",
 };
 
