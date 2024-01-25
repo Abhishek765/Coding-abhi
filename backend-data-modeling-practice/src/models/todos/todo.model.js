@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import { DATA_MODELS } from "../utils/constants";
+import { DATA_MODELS } from "../../utils/constants";
 
 const todoSchema = new mongoose.Schema(
   {
@@ -13,16 +13,18 @@ const todoSchema = new mongoose.Schema(
     },
     createdBy: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: DATA_MODELS.USER,
+      ref: DATA_MODELS.TODOS.USER,
     },
     subTodos: [
       {
         type: mongoose.Schema.Types.ObjectId,
-        ref: DATA_MODELS.SUB_TODO,
+        ref: DATA_MODELS.TODOS.SUB_TODO,
       },
     ], //! Array of sub-todos
   },
   { timestamps: true }
 );
 
-export const TodoModel = mongoose.model(DATA_MODELS.TODO, todoSchema);
+const TodoModel = mongoose.model(DATA_MODELS.TODOS.TODO, todoSchema);
+
+export default TodoModel;

@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import { DATA_MODELS } from "../utils/constants";
+import { DATA_MODELS } from "../../utils/constants";
 
 const userSchema = new mongoose.Schema(
   {
@@ -23,4 +23,6 @@ const userSchema = new mongoose.Schema(
   }
 );
 
-export const UserModel = mongoose.model(DATA_MODELS.USER, userSchema);
+const UserModel = mongoose.model(DATA_MODELS.TODOS.USER, userSchema);
+
+export default UserModel;
