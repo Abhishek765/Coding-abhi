@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import { DATA_MODELS } from "../../utils/constants";
+import { DATA_MODELS } from "../../utils/constants.js";
 
 const categorySchema = new mongoose.Schema(
   {

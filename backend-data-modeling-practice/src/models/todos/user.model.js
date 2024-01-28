@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import { DATA_MODELS } from "../../utils/constants";
+import { DATA_MODELS } from "../../utils/constants.js";
 
 const userSchema = new mongoose.Schema(
   {
