@@ -10,4 +10,10 @@ export const DATA_MODELS = {
     PRODUCT: "Product",
     ORDER: "Order",
   },
+  HOSPITAL_MANAGEMENT: {
+    MEDICAL_RECORDS: "MedicalRecords",
+    HOSPITAL: "Hospital",
+    DOCTOR: "Doctor",
+    PATIENT: "Patient",
+  },
 };
