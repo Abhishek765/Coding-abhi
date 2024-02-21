@@ -1,5 +1,5 @@
 const Register = () => {
-  return <div>Register</div>;
+  return <h1 className="font-bold text-2xl">Register</h1>;
 };
 
 export default Register;

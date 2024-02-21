@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export default function Home() {
   return (
-    <ul className="text-green-500 list-disc">
+    <ul className="list-disc">
       <li>
         <Link href="/products">Dynamic Routing</Link>
       </li>

@@ -23,7 +23,7 @@ export default function RootLayout({
         <header className="bg-blue-300 p-4">
           <p>header</p>
         </header>
-        <section className="text-green-500">{children}</section>
+        <section className="">{children}</section>
         <footer className="bg-slate-300 p-4">
           <p>footer</p>
         </footer>
