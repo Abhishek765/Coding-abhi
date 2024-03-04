@@ -1,13 +1,13 @@
 import Card from "@/components/Card";
 import Link from "next/link";
 
-const NotificationPage = () => {
+const ArchivedNotificationPage = () => {
   return (
     <Card>
       Notification Service
-      <Link href={"/complex-dashboard/archived"}>Archived</Link>
+      <Link href={"/complex-dashboard"}>Default</Link>
     </Card>
   );
 };
 
-export default NotificationPage;
+export default ArchivedNotificationPage;
