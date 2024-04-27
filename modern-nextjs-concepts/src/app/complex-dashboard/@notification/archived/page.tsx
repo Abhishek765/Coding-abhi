@@ -5,7 +5,9 @@ const ArchivedNotificationPage = () => {
   return (
     <Card>
       Notification Service
-      <Link href={"/complex-dashboard"}>Default</Link>
+      <Link href={"/complex-dashboard"} className="text-blue-500 underline">
+        Default
+      </Link>
     </Card>
   );
 };
