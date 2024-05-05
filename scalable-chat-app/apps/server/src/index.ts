@@ -2,6 +2,7 @@ import express from "express";
 
 import { createServer } from "node:http";
 import SocketService from "./services/socket";
+import { config } from "./config";
 
 async function init() {
   const app = express();
@@ -9,7 +10,7 @@ async function init() {
   const httpServer = createServer(app);
 
   // constants
-  const PORT = process.env.PORT || 8000;
+  const PORT = config.SERVER_PORT || 8000;
 
   // Routes
   app.get("/", (req, res) => {
@@ -20,7 +21,9 @@ async function init() {
   socketService.io.attach(httpServer);
   socketService.initListeners();
 
-  httpServer.listen(PORT, () => console.log(`server listening on ${PORT}`));
+  httpServer.listen(PORT, () =>
+    console.log(`server listening on http://localhost:${PORT}`)
+  );
 }
 
 init();

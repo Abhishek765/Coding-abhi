@@ -15,19 +15,30 @@ type SocketProviderProps = {
 
 type TSocketContext = {
   sendMessage: (message: string) => void;
+  messages: string[];
 };
 
 const SocketContext = createContext<TSocketContext | null>(null);
 
 const SocketProvider = ({ children }: SocketProviderProps) => {
   const [socket, setSocket] = useState<Socket | null>(null);
+  const [messages, setMessages] = useState<string[]>([]);
+
+  const onMessageReceived = useCallback((msg: string) => {
+    console.log("from server received message", msg);
+    const { message } = JSON.parse(msg) as { message: string };
+
+    setMessages((prevMsg) => [...prevMsg, message]);
+  }, []);
 
   useEffect(() => {
-    const socket = io("http://localhost:8000"); // socket server domain
-    setSocket(socket);
+    const _socket = io("http://localhost:8000"); // socket server domain
+    setSocket(_socket);
+    _socket.on("redis:message", onMessageReceived);
 
     return () => {
-      socket.disconnect();
+      _socket.disconnect();
+      _socket.off("redis:message", onMessageReceived);
       setSocket(null);
     };
   }, []);
@@ -42,7 +53,7 @@ const SocketProvider = ({ children }: SocketProviderProps) => {
   );
 
   return (
-    <SocketContext.Provider value={{ sendMessage }}>
+    <SocketContext.Provider value={{ sendMessage, messages }}>
       {children}
     </SocketContext.Provider>
   );

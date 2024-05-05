@@ -28,6 +28,11 @@ const Page = () => {
         />
         <Button onClick={handleSendClick}>Send</Button>
       </div>
+      <div>
+        {state.messages.map((message) => {
+          return <li key={message}>{message}</li>;
+        })}
+      </div>
     </div>
   );
 };
