@@ -1,4 +1,22 @@
 import { comments } from "@/utils/comments/data";
+import { redirect } from "next/navigation";
+
+export async function GET(
+  req: Request,
+  { params }: { params: { id: string } }
+) {
+  const intId = parseInt(params.id);
+
+  if (intId > comments.length) {
+    redirect("/api/comments");
+  }
+
+  const comment = comments.find((comment) => comment.id === intId);
+
+  return new Response(JSON.stringify(comment), {
+    status: 200,
+  });
+}
 
 export async function PATCH(
   req: Request,
