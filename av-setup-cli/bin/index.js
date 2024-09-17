@@ -1,16 +1,16 @@
 #!/usr/bin/env node
 
 const { Command } = require("commander");
-const git = require("simple-git")();
-const shell = require("shelljs");
-const chalk = require("chalk");
+import { simpleGit } from "simple-git";
+import shell from "shelljs";
+import chalk from "chalk";
 const program = new Command();
 
 // Helper function to clone the GitHub template
 const cloneTemplate = async (repoUrl, destination) => {
   try {
     console.log(chalk.blue("Cloning template..."));
-    await git.clone(repoUrl, destination);
+    await simpleGit().clone(repoUrl, destination);
     console.log(chalk.green("Template cloned successfully!"));
   } catch (error) {
     console.log(chalk.red("Error cloning template:", error));
