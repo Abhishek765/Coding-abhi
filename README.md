@@ -18,3 +18,4 @@
 - [Backend Data Modeling Practice](https://github.com/Abhishek765/Coding-abhi/tree/main/backend-data-modeling-practice)
 
 - [GraphQL + React (Full stack todo app)](https://github.com/Abhishek765/Coding-abhi/tree/main/graph-ql-practice)
+- [av-setup-cli: A node cli to setup ultimate-node-backend project](https://github.com/Abhishek765/Coding-abhi/tree/main/av-setup-cli)
