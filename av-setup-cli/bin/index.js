@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-const { Command } = require("commander");
+import { Command } from "commander";
 import { simpleGit } from "simple-git";
 import shell from "shelljs";
 import chalk from "chalk";
