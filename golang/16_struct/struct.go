@@ -35,6 +35,17 @@ func (o order) getAmount() float32 { // pointer is optional in case getting the 
 	return o.amount
 }
 
+// inheritance in struct via embedding
+type person struct {
+	name  string
+	phone string
+}
+
+type employee struct {
+	person
+	email string
+}
+
 func main() {
 
 	// if we don't set any field value then by default it will be assigned as zero values
@@ -80,4 +91,17 @@ func main() {
 		isGood: true,
 	}
 	fmt.Println(language)
+
+	// inheritance via embeddings
+	newEmployee := employee{
+		person: person{
+			name:  "Abhishek",
+			phone: "1234567890",
+		},
+		email: "test@test.com",
+	}
+
+	fmt.Println(newEmployee)
+	newEmployee.person.name = "Robin" // change is ok
+	fmt.Println(newEmployee)
 }
