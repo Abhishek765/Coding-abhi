@@ -2,10 +2,12 @@ package main
 
 import "fmt"
 
-func emailProcessor(emailChan chan string, done chan bool) {
+func emailProcessor(emailChan <-chan string, done chan<- bool) {
 
 	defer func() { done <- true }()
 
+	// emailChan <- "test1" -> not allowed because emailChan is a receive-only channel
+	// <-done -> not allowed because done is a send-only channel
 	for email := range emailChan {
 		fmt.Println("Processing Email: ", email)
 	}
