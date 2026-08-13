@@ -5,6 +5,7 @@ import (
 	"sync"
 )
 
+// Receive case where we're receiving the data from channel inside a goroutine
 func processNum(numChan chan int, wg *sync.WaitGroup) {
 	num := <-numChan
 	fmt.Println("Received number:", num)
@@ -19,6 +20,7 @@ func processNum(numChan chan int, wg *sync.WaitGroup) {
 // 	}
 // }
 
+// Sending case where we're sending the data from this goroutine to main via channel
 func sum(result chan int, a int, b int) {
 	total := a + b
 	result <- total
@@ -42,8 +44,8 @@ func main() {
 	// -------------------
 
 	// case to get a number from the channel from a goroutine and print it in the main function
-	result := make(chan int)
-	go sum(result, 3, 4)
-	total := <-result
-	fmt.Println(total)
+	// result := make(chan int)
+	// go sum(result, 3, 4)
+	// total := <-result
+	// fmt.Println(total)
 }
