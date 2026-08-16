@@ -1,6 +1,10 @@
 package main
 
-import "os"
+import (
+	"bufio"
+	"fmt"
+	"os"
+)
 
 func main() {
 	// f, err := os.Open("example.txt")
@@ -64,16 +68,51 @@ func main() {
 	// }
 
 	// create a file
-	f, err := os.Create("example2.txt")
+	// f, err := os.Create("example2.txt")
 
+	// if err != nil {
+	// 	panic(err)
+	// }
+
+	// defer f.Close()
+
+	// data := []byte("Nice Language")
+	// f.WriteString("Hello Golang to example 2\n")
+	// f.Write(data)
+
+	// read and write to another file (streaming fashion)
+
+	sourceFile, err := os.Open("example.txt")
 	if err != nil {
 		panic(err)
 	}
+	defer sourceFile.Close()
 
-	defer f.Close()
+	destFile, err := os.Create("example2.txt")
+	if err != nil {
+		panic(err)
+	}
+	defer destFile.Close()
 
-	data := []byte("Nice Language")
-	f.WriteString("Hello Golang to example 2\n")
-	f.Write(data)
+	reader := bufio.NewReader(sourceFile)
+	writer := bufio.NewWriter(destFile)
+
+	for {
+		b, err := reader.ReadByte()
+		if err != nil {
+			if err.Error() != "EOF" {
+				panic(err)
+			}
+			break
+		}
+
+		e := writer.WriteByte(b)
+		if e != nil {
+			panic(e)
+		}
+	}
+
+	writer.Flush()
+	fmt.Println("Written is completed")
 
 }
