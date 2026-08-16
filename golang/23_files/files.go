@@ -1,10 +1,5 @@
 package main
 
-import (
-	"fmt"
-	"os"
-)
-
 func main() {
 	// f, err := os.Open("example.txt")
 	// if err != nil {
@@ -25,22 +20,31 @@ func main() {
 	// fmt.Println("File modified at: ", fileInfo.ModTime())
 
 	//1. Read file
-	f, err := os.Open("example.txt")
-	if err != nil {
-		panic(err)
-	}
+	// f, err := os.Open("example.txt")
+	// if err != nil {
+	// 	panic(err)
+	// }
 
-	defer f.Close() // important after opening is done for this file we can immediately close it so that os is not busy
+	// defer f.Close() // important after opening is done for this file we can immediately close it so that os is not busy
 
-	buf := make([]byte, 12)
+	// buf := make([]byte, 12)
 
-	l, err := f.Read(buf)
-	if err != nil {
-		panic(err)
-	}
+	// l, err := f.Read(buf)
+	// if err != nil {
+	// 	panic(err)
+	// }
 
-	for i := 0; i < len(buf); i++ {
-		fmt.Println("data", l, string(buf[i]))
-	}
+	// for i := 0; i < len(buf); i++ {
+	// 	fmt.Println("data", l, string(buf[i]))
+	// }
+
+	// 2nd way reads the content at once
+	// data, err := os.ReadFile("example.txt")
+
+	// if err != nil {
+	// 	panic(err)
+	// }
+
+	// fmt.Println(string(data))
 
 }
