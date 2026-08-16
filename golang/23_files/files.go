@@ -1,5 +1,10 @@
 package main
 
+import (
+	"fmt"
+	"os"
+)
+
 func main() {
 	// f, err := os.Open("example.txt")
 	// if err != nil {
@@ -46,5 +51,19 @@ func main() {
 	// }
 
 	// fmt.Println(string(data))
+
+	// Read folders
+	dir, err := os.Open("../")
+	if err != nil {
+		panic(err)
+	}
+
+	defer dir.Close()
+
+	fileInfo, err := dir.ReadDir(-1)
+
+	for _, fi := range fileInfo {
+		fmt.Println(fi.Name(), fi.IsDir())
+	}
 
 }
